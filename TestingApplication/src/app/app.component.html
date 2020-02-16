@@ -1,18 +1,33 @@
 <h1>{{title}}</h1>
-
-<input type="text"/> &nbsp;
-<button (click)="addTodo(newTodo.value)">Create</button> <br>
-<button type="button" class="btn btn-primary">Primary</button>
+<br>
+<input type="text" #newTodoLabel/> &nbsp;
+<button type="button" class="btn btn-primary" (click)="addTodo(newTodoLabel)">Create</button>
 
 <table>
     <tr>
         <th>Tasks</th>
         <th>Status</th>
+        <!-- <th>Index Values</th> -->
     </tr>
+    <tr *ngFor="let item of todo">
+        <td>{{item.tasks}}</td>
+        <td>{{item.status}}</td>
+        <!-- <td>{{item.indexOf(todo)}</td> -->
+    </tr>
+    <br>
+
+    <h3>After using index values</h3>
+    <div *ngFor="let item of todo; let i=index">
+        <table>
+            <td>{{ i + 1 }} - {{ item.tasks }}</td>
+        </table>
+    </div>
+
+    <!-- <div *ngFor="let item of todo; let i=index">
+        <p *ngIf="todo.indexOf(i)>1">
+            <table>
+                <td>{{ item.tasks }}</td>
+            </table>
+        </p>
+    </div> -->
 </table>
-
-<tr *ngIf="let todo of todos">
-    <td>{{todo.tasks}}</td>
-    <td>{{todo.status}}</td>
-
-</tr>

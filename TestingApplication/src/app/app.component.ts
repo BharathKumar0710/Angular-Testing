@@ -6,7 +6,8 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = "My Todo List";
+  title: string = "My Todo List";
+
   todo = [
     {
       tasks: "Add ToDoList immediately",
@@ -17,8 +18,16 @@ export class AppComponent {
       status: true
     },
     {
-      tasks: "Work on the Task",
-      status: true
+      tasks: "Complete the task",
+      status: false
     }
   ];
+
+  addTodo(newTodoLabel) {
+    var newTodo = {
+      tasks: newTodoLabel,
+      status: false
+    };
+    this.todo.push(newTodo);
+  }
 }
